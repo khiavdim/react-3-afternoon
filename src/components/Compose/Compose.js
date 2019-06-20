@@ -14,6 +14,7 @@ export default class Compose extends Component {
     };
 
     this.createPost = this.createPost.bind( this );
+    this.updateText = this.updateText.bind(this)
   }
 
   updateText( text ) {
@@ -21,12 +22,18 @@ export default class Compose extends Component {
   }
 
   createPost() {
-
+    const {text} = this.state
+    const {createPostFn} = this.props
+    createPostFn(text)
+    this.setState({
+      text: ''
+    })
   }
 
   render() {
     // Destructuring
     const { text } = this.state;
+  
 
     return (
       <section className="Compose__parent">
